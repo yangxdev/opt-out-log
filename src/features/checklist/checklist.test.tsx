@@ -5,6 +5,7 @@ import { makeStore } from '../../app/store.ts';
 import { renderWithStore } from '../../test/render.tsx';
 import { ChecklistItem } from './ChecklistItem.tsx';
 import { ChecklistList } from './ChecklistList.tsx';
+import { PlatformFilter } from './PlatformFilter.tsx';
 import { catalogue, persistChecks } from './checklistSlice.ts';
 import { STORAGE_KEY } from './helpers.ts';
 
@@ -115,5 +116,41 @@ describe('ChecklistList', () => {
     expect(
       screen.getByText('No switches for this platform. Add one by pull request.'),
     ).toBeInTheDocument();
+  });
+});
+
+describe('PlatformFilter', () => {
+  it('AC4: Apple shows only Apple entries and All restores every entry', async () => {
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    renderWithStore(
+      <>
+        <PlatformFilter />
+        <ChecklistList />
+      </>,
+    );
+    const appleCount = catalogue.filter((e) => e.platform === 'apple').length;
+    const apple = screen.getByRole('button', { name: /^Apple/ });
+    expect(apple).toHaveAttribute('aria-pressed', 'false');
+
+    await user.click(apple);
+    expect(apple).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getAllByRole('checkbox')).toHaveLength(appleCount);
+
+    await user.click(screen.getByRole('button', { name: /^All/ }));
+    expect(screen.getAllByRole('checkbox')).toHaveLength(catalogue.length);
+  });
+
+  it('AC4: each button shows the count of entries for its platform', () => {
+    renderWithStore(<PlatformFilter />);
+    const group = screen.getByRole('group', { name: 'Filter by platform' });
+    expect(within(group).getAllByRole('button')).toHaveLength(7);
+    expect(within(group).getByRole('button', { name: /^All/ })).toHaveTextContent(
+      String(catalogue.length),
+    );
+    const labels = { openai: 'OpenAI', apple: 'Apple', microsoft: 'Microsoft' } as const;
+    for (const [platform, label] of Object.entries(labels)) {
+      const n = catalogue.filter((e) => e.platform === platform).length;
+      expect(within(group).getByRole('button', { name: `${label} ${n}` })).toBeInTheDocument();
+    }
   });
 });
