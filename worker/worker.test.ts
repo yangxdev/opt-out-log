@@ -21,7 +21,7 @@ const call = (path: string, init?: RequestInit) =>
   worker.fetch(new Request(`https://app.example${path}`, init) as IncomingRequest, env, ctx);
 
 describe('worker', () => {
-  it('GET /api/health returns ok and reports missing bindings', async () => {
+  it('AC12: GET /api/health returns 200 with ok true and reports missing bindings', async () => {
     const res = await call('/api/health');
     expect(res.status).toBe(200);
     expect(res.headers.get('cache-control')).toBe('no-store');

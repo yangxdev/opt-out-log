@@ -6,7 +6,7 @@ import settings from './settings.json';
 const entries = settings as SettingEntry[];
 
 describe('settings catalogue', () => {
-  it('has at least one entry and unique kebab-case ids', () => {
+  it('AC1: has at least one entry and unique kebab-case ids', () => {
     expect(entries.length).toBeGreaterThan(0);
     const ids = entries.map((e) => e.id);
     expect(new Set(ids).size).toBe(ids.length);
