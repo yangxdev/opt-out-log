@@ -7,7 +7,8 @@ import { ChecklistItem } from './ChecklistItem.tsx';
 import { ChecklistList } from './ChecklistList.tsx';
 import { PlatformFilter } from './PlatformFilter.tsx';
 import { catalogue, persistChecks } from './checklistSlice.ts';
-import { STORAGE_KEY } from './helpers.ts';
+import { CopyChecklistButton } from './CopyChecklistButton.tsx';
+import { STORAGE_KEY, toMarkdown } from './helpers.ts';
 
 const DAY = 24 * 60 * 60 * 1000;
 const NOW = new Date('2026-06-30T12:00:00.000Z');
@@ -116,6 +117,51 @@ describe('ChecklistList', () => {
     expect(
       screen.getByText('No switches for this platform. Add one by pull request.'),
     ).toBeInTheDocument();
+  });
+});
+
+describe('CopyChecklistButton', () => {
+  const fullMarkdown = (checks = {}) => toMarkdown(catalogue, checks, NOW);
+
+  it('AC11: copies the full Markdown once, ignoring the filter, and announces success', async () => {
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true });
+    const store = makeStore({ checklist: { checks: {}, filter: 'apple' } });
+    renderWithStore(<CopyChecklistButton />, { store });
+
+    await user.click(screen.getByRole('button', { name: 'Copy my checklist' }));
+
+    expect(writeText).toHaveBeenCalledOnce();
+    expect(writeText).toHaveBeenCalledWith(fullMarkdown());
+    expect(await screen.findByRole('status')).toHaveTextContent('Copied to clipboard');
+  });
+
+  it('AC11: when the clipboard rejects, shows an alert and a read-only textarea', async () => {
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    const writeText = vi.fn().mockRejectedValue(new Error('denied'));
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true });
+    renderWithStore(<CopyChecklistButton />);
+
+    await user.click(screen.getByRole('button', { name: 'Copy my checklist' }));
+
+    expect(await screen.findByRole('alert')).toHaveTextContent(
+      'Could not copy. Select the text below instead.',
+    );
+    const area = screen.getByRole('textbox', { name: 'Checklist as Markdown' });
+    expect(area).toHaveAttribute('readonly');
+    expect(area).toHaveValue(fullMarkdown());
+  });
+
+  it('AC11: when the clipboard is unavailable, falls back to the textarea', async () => {
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    Object.defineProperty(navigator, 'clipboard', { value: undefined, configurable: true });
+    renderWithStore(<CopyChecklistButton />);
+
+    await user.click(screen.getByRole('button', { name: 'Copy my checklist' }));
+
+    expect(await screen.findByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Checklist as Markdown' })).toBeInTheDocument();
   });
 });
 
