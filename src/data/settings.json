@@ -1,0 +1,153 @@
+[
+  {
+    "id": "chatgpt-training",
+    "platform": "openai",
+    "product": "ChatGPT",
+    "title": "Stop using my chats to train models",
+    "path": "Settings > Data controls > Improve the model for everyone",
+    "why": "Your conversations can be used to train future models unless you turn this off.",
+    "verifiedOn": null,
+    "url": "https://help.openai.com/en/articles/7730893-data-controls-faq"
+  },
+  {
+    "id": "chatgpt-memory",
+    "platform": "openai",
+    "product": "ChatGPT",
+    "title": "Turn off memory",
+    "path": "Settings > Personalization > Memory",
+    "why": "Memory keeps details from past chats and reuses them in new ones.",
+    "verifiedOn": null,
+    "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+  },
+  {
+    "id": "apple-intelligence-ios",
+    "platform": "apple",
+    "product": "Apple Intelligence (iOS)",
+    "title": "Turn off Apple Intelligence",
+    "path": "Settings > Apple Intelligence & Siri > Apple Intelligence",
+    "why": "Switching it off stops on-device and cloud AI features from processing your content.",
+    "verifiedOn": null,
+    "url": "https://support.apple.com/en-us/121115"
+  },
+  {
+    "id": "apple-intelligence-macos",
+    "platform": "apple",
+    "product": "Apple Intelligence and Siri (macOS)",
+    "title": "Turn off Apple Intelligence and Siri",
+    "path": "System Settings > Apple Intelligence & Siri",
+    "why": "Siri and AI features can send requests and content to Apple servers.",
+    "verifiedOn": null
+  },
+  {
+    "id": "apple-siri-suggestions",
+    "platform": "apple",
+    "product": "Siri",
+    "title": "Stop Siri suggestions and learning from apps",
+    "path": "Settings > Apple Intelligence & Siri > Apps > choose an app > Learn from this App",
+    "why": "Siri learns from how you use each app to make suggestions.",
+    "verifiedOn": null
+  },
+  {
+    "id": "apple-analytics",
+    "platform": "apple",
+    "product": "Apple Analytics",
+    "title": "Stop sharing analytics with Apple",
+    "path": "Settings > Privacy & Security > Analytics & Improvements > Share iPhone Analytics",
+    "why": "Usage and diagnostic data is sent to Apple, and to app developers if you allow it.",
+    "verifiedOn": null,
+    "url": "https://support.apple.com/en-us/102995"
+  },
+  {
+    "id": "outlook-connected-experiences",
+    "platform": "microsoft",
+    "product": "Outlook on the web",
+    "title": "Turn off optional connected experiences",
+    "path": "Settings > General > Privacy and data > Connected experiences",
+    "why": "Connected experiences send your content to online services to power suggestions.",
+    "verifiedOn": null
+  },
+  {
+    "id": "windows-diagnostic-data",
+    "platform": "microsoft",
+    "product": "Windows",
+    "title": "Turn off optional diagnostic data",
+    "path": "Settings > Privacy & security > Diagnostics & feedback > Send optional diagnostic data",
+    "why": "Optional diagnostics can include browsing and app activity details.",
+    "verifiedOn": null
+  },
+  {
+    "id": "windows-recall",
+    "platform": "microsoft",
+    "product": "Windows Recall",
+    "title": "Stop saving snapshots",
+    "path": "Settings > Privacy & security > Recall & snapshots > Save snapshots",
+    "why": "Recall takes periodic screenshots of your screen and stores them on the device.",
+    "verifiedOn": null
+  },
+  {
+    "id": "edge-copilot",
+    "platform": "microsoft",
+    "product": "Microsoft Edge",
+    "title": "Turn off Copilot page context",
+    "path": "Settings > Copilot and sidebar > Copilot > Allow Microsoft to access page content",
+    "why": "Copilot can read the pages you browse to answer questions about them.",
+    "verifiedOn": null
+  },
+  {
+    "id": "gemini-apps-activity",
+    "platform": "google",
+    "product": "Gemini",
+    "title": "Turn off Gemini Apps Activity",
+    "path": "gemini.google.com > Activity > Turn off",
+    "why": "Saved activity can be reviewed by people and used to improve Google products.",
+    "verifiedOn": null,
+    "url": "https://myactivity.google.com/product/gemini"
+  },
+  {
+    "id": "chrome-ad-privacy",
+    "platform": "google",
+    "product": "Chrome",
+    "title": "Turn off ad privacy features",
+    "path": "Settings > Privacy and security > Ad privacy",
+    "why": "Chrome can share topics and site data with advertisers for ad personalisation.",
+    "verifiedOn": null
+  },
+  {
+    "id": "google-web-app-activity",
+    "platform": "google",
+    "product": "Google Account",
+    "title": "Pause Web & App Activity",
+    "path": "myaccount.google.com > Data & privacy > Web & App Activity > Turn off",
+    "why": "Your searches and app use are saved to your account and used for personalisation.",
+    "verifiedOn": null,
+    "url": "https://myactivity.google.com/activitycontrols"
+  },
+  {
+    "id": "firefox-data-collection",
+    "platform": "browser",
+    "product": "Firefox",
+    "title": "Turn off data collection and use",
+    "path": "Settings > Privacy & Security > Firefox Data Collection and Use",
+    "why": "Firefox can send technical and interaction data to Mozilla.",
+    "verifiedOn": null,
+    "url": "https://support.mozilla.org/en-US/kb/telemetry-clientid"
+  },
+  {
+    "id": "linkedin-generative-ai",
+    "platform": "other",
+    "product": "LinkedIn",
+    "title": "Turn off Data for Generative AI Improvement",
+    "path": "Settings > Data privacy > Data for Generative AI Improvement",
+    "why": "Your profile and posts can be used to train generative AI models.",
+    "verifiedOn": null
+  },
+  {
+    "id": "github-copilot-training",
+    "platform": "other",
+    "product": "GitHub Copilot",
+    "title": "Stop allowing GitHub to use my data for training",
+    "path": "Settings > Copilot > Features > Allow GitHub to use my data for product improvements",
+    "why": "Your prompts and suggestions may be used to improve Copilot.",
+    "verifiedOn": null
+  }
+]

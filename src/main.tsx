@@ -3,11 +3,15 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App.tsx';
 import { makeStore } from './app/store.ts';
+import { persistChecks } from './features/checklist/checklistSlice.ts';
 import './index.css';
+
+const store = makeStore();
+persistChecks(store, localStorage);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Provider store={makeStore()}>
+    <Provider store={store}>
       <App />
     </Provider>
   </StrictMode>,
