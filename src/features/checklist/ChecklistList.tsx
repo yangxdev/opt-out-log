@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
-import { EmptyState } from '../../components/ui/index.ts';
+import { EmptyState, RuledList } from '../../components/ui/index.ts';
 import { ChecklistItem } from './ChecklistItem.tsx';
-import { selectChecks, selectVisibleEntries, toggleCheck } from './checklistSlice.ts';
+import { catalogue, selectChecks, selectVisibleEntries, toggleCheck } from './checklistSlice.ts';
 import { getStatus } from './helpers.ts';
 
 export function ChecklistList() {
@@ -12,24 +12,28 @@ export function ChecklistList() {
 
   if (entries.length === 0) {
     return (
-      <EmptyState
-        title="Nothing here yet"
-        body="No switches for this platform. Add one by pull request."
-      />
+      <div className="mt-8">
+        <EmptyState
+          title="Nothing here yet"
+          body="No switches for this platform. Add one by pull request."
+        />
+      </div>
     );
   }
 
   return (
-    <ul className="grid gap-3">
+    // The filter row above already draws the top rule.
+    <RuledList className="border-t-0">
       {entries.map((entry) => (
         <ChecklistItem
           key={entry.id}
           entry={entry}
+          number={catalogue.indexOf(entry) + 1}
           status={getStatus(checks, entry.id, now)}
           checkedAt={checks[entry.id]}
           onToggle={() => dispatch(toggleCheck({ id: entry.id, now: new Date().toISOString() }))}
         />
       ))}
-    </ul>
+    </RuledList>
   );
 }

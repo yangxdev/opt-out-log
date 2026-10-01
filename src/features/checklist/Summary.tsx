@@ -8,7 +8,7 @@ export function Summary() {
     shallowEqual,
   );
   return (
-    <p className="tnum text-sm text-muted">
+    <p className="pt-3 font-mono text-small text-ink-soft tnum">
       {checked} of {total} checked · {stale} to re-check
     </p>
   );

@@ -30,13 +30,13 @@ export function CopyChecklistButton() {
         Copy my checklist
       </Button>
       {state.kind === 'copied' ? (
-        <p role="status" className="mt-2 text-sm text-muted">
+        <p role="status" className="mt-2 font-mono text-label uppercase text-muted">
           Copied to clipboard
         </p>
       ) : null}
       {state.kind === 'failed' ? (
         <div className="mt-3">
-          <p role="alert" className="text-sm text-danger">
+          <p role="alert" className="text-small text-danger">
             Could not copy. Select the text below instead.
           </p>
           <label className="mt-3 block">
@@ -46,7 +46,7 @@ export function CopyChecklistButton() {
               rows={8}
               value={state.text}
               onFocus={(e) => e.currentTarget.select()}
-              className={`${inputClass} mt-1.5 font-mono`}
+              className={`${inputClass} mt-1.5 font-mono text-small`}
             />
           </label>
         </div>
