@@ -111,4 +111,4 @@ React 19, Vite, Redux Toolkit and Tailwind CSS v4, served by a Cloudflare Worker
 
 ---
 
-Made by [yangxdev](https://github.com/yangxdev).
+Made by [yangxdev](https://github.com/yangxdev). [MIT licensed](LICENSE.md).
