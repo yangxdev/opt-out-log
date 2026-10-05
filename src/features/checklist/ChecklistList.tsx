@@ -12,7 +12,7 @@ export function ChecklistList() {
 
   if (entries.length === 0) {
     return (
-      <div className="mt-8">
+      <div className="py-6">
         <EmptyState
           title="Nothing here yet"
           body="No switches for this platform. Add one by pull request."
@@ -22,8 +22,7 @@ export function ChecklistList() {
   }
 
   return (
-    // The filter row above already draws the top rule.
-    <RuledList className="border-t-0">
+    <RuledList>
       {entries.map((entry) => (
         <ChecklistItem
           key={entry.id}

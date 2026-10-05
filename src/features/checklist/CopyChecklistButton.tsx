@@ -24,7 +24,7 @@ export function CopyChecklistButton() {
   }
 
   return (
-    <div>
+    <div className={state.kind === 'failed' ? 'w-full' : undefined}>
       <Button variant="primary" onClick={() => void copy()}>
         <LuCopy className="size-4" aria-hidden />
         Copy my checklist
@@ -39,7 +39,7 @@ export function CopyChecklistButton() {
           <p role="alert" className="text-small text-danger">
             Could not copy. Select the text below instead.
           </p>
-          <label className="mt-3 block">
+          <label className="mt-3 block max-w-3xl">
             <span className={labelClass}>Checklist as Markdown</span>
             <textarea
               readOnly
