@@ -15,8 +15,6 @@ to check again.
 <!-- greenlight:screenshots -->
 <img alt="opt-out-log, first screen on a desktop browser" src="docs/screenshots/desktop-light.png">
 
-<img alt="opt-out-log, the main view" src="docs/screenshots/section-light.png">
-
 <p align="center">
 <img alt="opt-out-log on a phone" src="docs/screenshots/mobile-light.png" width="320">
 </p>
